@@ -4,6 +4,29 @@
 //     const links = document.querySelectorAll('.titles a');
 //     console.log('links:', links);
 //   });
+const generateTitleLinks = function(){
+    console.log('generate title links');
+    const linksList = document.querySelector('.sidebar ul');
+    const articles = document.querySelectorAll('article');
+    
+    /* [DONE] empty links list */
+    linksList.innerHTML = '';
+    let listHtml = '';
+    for (let article of articles){
+        /* [DONE] save article ids */
+        const id = article.getAttribute('id');
+        /* [DONE] save title */
+        const title = article.querySelector('.post-title').innerText;
+        /* [DONE] generate link html */
+        const linkHtml = '<li><a href="#' + id + '"><span>' + title + '</span></a></li>';
+        listHtml = listHtml + linkHtml;
+        console.log(linkHtml);
+    }
+        /* [DONE] insert html into title list */
+        linksList.innerHTML = listHtml;
+}
+
+generateTitleLinks();
 
 const titleClickHandler = function(event){
     event.preventDefault();
@@ -42,27 +65,3 @@ for(let link of links){
     link.addEventListener('click', titleClickHandler);
 }
 
-const generateTitleLinks = function(){
-    console.log('generate title links');
-    const linksList = document.querySelector('.sidebar ul');
-    const articles = document.querySelectorAll('article');
-    
-
-    /* [DONE] empty links list */
-    linksList.innerHTML = '';
-    
-    for (let article of articles){
-        /* [DONE] save article ids */
-        const id = article.getAttribute('id');
-        console.log(id);
-        /* [DONE] save title */
-        const title = article.querySelector('.post-title').innerText;
-        console.log(title);
-        /* generate link html */
-
-        /* insert html into title list */
-
-    }
-}
-
-generateTitleLinks();
