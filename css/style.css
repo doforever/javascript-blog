@@ -39,6 +39,14 @@ body {
   margin-left: 10px;
 }
 
+.sidebar, .posts {
+  background: #fff;
+  margin-right: 10px;
+  padding: 40px;
+  border: 1px solid #444;
+  border-radius: 5px;
+}
+
 .sidebar {
   -ms-flex: 1 0 0px;
       flex: 1 0 0;
@@ -47,14 +55,9 @@ body {
 .posts {
   -ms-flex: 2 0 0px;
       flex: 2 0 0;
-}
-
-.sidebar, .posts {
-  background: #fff;
-  margin-right: 10px;
-  padding: 40px;
-  border: 1px solid #444;
-  border-radius: 5px;
+  position: relative;
+  padding: 0;
+  overflow: auto;
 }
 
 /* Logo */
@@ -88,11 +91,15 @@ body {
 
 /* Post */
 .post {
-  display: none;
+  opacity: 0;
+  position: absolute;
+  padding: 40px;
+  transition: all 500ms;
 }
 
 .post.active {
-  display: block;
+  opacity: 1;
+  z-index: 1;
 }
 
 .post-author {
