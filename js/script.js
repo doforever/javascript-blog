@@ -41,3 +41,28 @@ const links = document.querySelectorAll('.titles a');
 for(let link of links){
     link.addEventListener('click', titleClickHandler);
 }
+
+const generateTitleLinks = function(){
+    console.log('generate title links');
+    const linksList = document.querySelector('.sidebar ul');
+    const articles = document.querySelectorAll('article');
+    
+
+    /* [DONE] empty links list */
+    linksList.innerHTML = '';
+    
+    for (let article of articles){
+        /* [DONE] save article ids */
+        const id = article.getAttribute('id');
+        console.log(id);
+        /* [DONE] save title */
+        const title = article.querySelector('.post-title').innerText;
+        console.log(title);
+        /* generate link html */
+
+        /* insert html into title list */
+
+    }
+}
+
+generateTitleLinks();
