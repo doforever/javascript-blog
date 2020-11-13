@@ -53,6 +53,9 @@ web_modules/
 # Optional eslint cache
 .eslintcache
 
+# eslint config
+.eslintrc.json
+
 # Microbundle cache
 .rpt2_cache/
 .rts2_cache_cjs/
@@ -114,3 +117,6 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# VSCode workspace file
+.code-workspace
