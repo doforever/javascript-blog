@@ -17,6 +17,8 @@ $font-text: 'Source Sans Pro', sans-serif;
 
 body {
   background: $color-light;
+  background-image: url(https://images.pexels.com/photos/3634855/pexels-photo-3634855.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
+  background-position: center 75%;
   font-family: $font-text;
   color: $color-dark;
   font-weight: 300;
@@ -58,7 +60,7 @@ a {
 }
 
 .sidebar, .posts {
-  background: $color-light;
+  background: transparentize($color-light, $amount: 0.3);
   margin-right: 10px;
   padding: 40px;
   border: 1px solid $color-dark;
