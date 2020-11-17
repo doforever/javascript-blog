@@ -120,3 +120,5 @@ dist
 
 # VSCode workspace file
 code_config.code-workspace
+.editorconfig
+.stylelintrc.json
