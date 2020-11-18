@@ -40,9 +40,9 @@ const titleClickHandler = function(event){
   chosenArticle.classList.add('active');
 };
 
-const generateTitleLinks = function(){
+const generateTitleLinks = function(customSelector = ''){
   const linksList = document.querySelector(optTitleListSelector);
-  const articles = document.querySelectorAll(optArticleSelector);
+  const articles = document.querySelectorAll(optArticleSelector + customSelector);
 
   /* [DONE] empty links list */
   linksList.innerHTML = '';
@@ -129,7 +129,7 @@ function tagClickHandler(event){
   /* END LOOP: for each found tag link */
   }
   /* execute function "generateTitleLinks" with article selector as argument */
-  // generateTitleLinks(tag);
+  generateTitleLinks('[data-tags~="' + tag + '"]');
 }
 
 function addClickListenersToTags(){
