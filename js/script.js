@@ -75,31 +75,80 @@ const generateTitleLinks = function(){
 
 function generateTags(){
   /* find all articles */
+  const articles = document.querySelectorAll(optArticleSelector);
 
   /* START LOOP: for every article: */
+  for (let article of articles){
 
-  /* find tags wrapper */
+    /* find tags wrapper */
+    const tagsList = article.querySelector(optArticleTagsSelector);
 
-  /* make html variable with empty string */
+    /* make html variable with empty string */
+    let tagsHtml = '';
 
-  /* get tags from data-tags attribute */
+    /* get tags from data-tags attribute */
+    const tags = article.getAttribute('data-tags');
 
-  /* split tags into array */
+    /* split tags into array */
+    const tagsArray = tags.split(' ');
+    console.log(tagsArray);
+    /* START LOOP: for each tag */
+    for (let tag of tagsArray) {
+      /* generate HTML of the link */
+      const liHtml = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      console.log(liHtml);
 
-  /* START LOOP: for each tag */
+      /* add generated code to html variable */
+      tagsHtml = tagsHtml + liHtml;
 
-  /* generate HTML of the link */
-
-  /* add generated code to html variable */
-
-  /* END LOOP: for each tag */
-
-  /* insert HTML of all the links into the tags wrapper */
-
+      /* END LOOP: for each tag */
+    }
+    /* insert HTML of all the links into the tags wrapper */
+    tagsList.innerHTML = tagsHtml;
   /* END LOOP: for every article: */
+  }
+}
+
+function tagClickHandler(event){
+  /* prevent default action for this event */
+
+  /* make new constant named "clickedElement" and give it the value of "this" */
+
+  /* make a new constant "href" and read the attribute "href" of the clicked element */
+
+  /* make a new constant "tag" and extract tag from the "href" constant */
+
+  /* find all tag links with class active */
+
+  /* START LOOP: for each active tag link */
+
+    /* remove class active */
+
+  /* END LOOP: for each active tag link */
+
+  /* find all tag links with "href" attribute equal to the "href" constant */
+
+  /* START LOOP: for each found tag link */
+
+    /* add class active */
+
+  /* END LOOP: for each found tag link */
+
+  /* execute function "generateTitleLinks" with article selector as argument */
+}
+
+function addClickListenersToTags(){
+  /* find all links to tags */
+
+  /* START LOOP: for each link */
+
+    /* add tagClickHandler as event listener for that link */
+
+  /* END LOOP: for each link */
 }
 
 /* Run */
 
 generateTitleLinks();
 generateTags();
+addClickListenersToTags();

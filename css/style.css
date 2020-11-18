@@ -97,6 +97,7 @@ a:hover {
 
 .list-horizontal li {
   display: inline-block;
+  margin-right: 0.3em;
 }
 
 /* Authors */
