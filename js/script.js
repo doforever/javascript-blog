@@ -7,12 +7,6 @@ const logo = document.querySelector('.logo');
 /* Event listners */
 
 logo.addEventListener ('click', function(){
-  /* find all active elements */
-  const activeElements = document.querySelectorAll('.active');
-  /* remove all active classes */
-  for (let element of activeElements){
-    element.classList.remove('active');
-  }
   generateTitleLinks();
 });
 
@@ -58,6 +52,29 @@ function generateTitleLinks (customSelector = ''){
   const linksList = document.querySelector(optTitleListSelector);
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
 
+  /* Remove old filters */
+  let filter = null;
+  if (customSelector.includes('tag')) filter = 'tag';
+  if (customSelector.includes('author')) filter = 'author';
+
+  function removeOldFilter(...args) {
+    for (let filter of args){
+      const activeLinks = document.querySelectorAll('a.active[href^="#' + filter + '"]');
+      console.log(activeLinks);
+      for (let link of activeLinks){
+        link.classList.remove('active');
+      }
+    }
+  }
+
+  if (filter == 'tag'){
+    removeOldFilter('author');
+  } else if (filter == 'author') {
+    removeOldFilter('tag');
+  } else {
+    removeOldFilter('tag', 'author');
+  }
+
   /* [DONE] remove class 'active' from all articles */
   const activeArticle = document.querySelector(optArticleSelector + '.active');
   if (activeArticle){
@@ -86,6 +103,8 @@ function generateTitleLinks (customSelector = ''){
   for(let link of links){
     link.addEventListener('click', titleClickHandler);
   }
+  /* Add class activ to first item */
+  links[0].classList.add('active');
 
 }
 

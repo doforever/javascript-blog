@@ -9,6 +9,7 @@ body {
   background: #fff;
   background-image: url(https://images.pexels.com/photos/3634855/pexels-photo-3634855.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260);
   background-position: center 75%;
+  background-size: cover;
   font-family: "Source Sans Pro", sans-serif;
   color: #444;
   font-weight: 300;
