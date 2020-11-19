@@ -105,7 +105,19 @@ function generateTitleLinks (customSelector = ''){
   }
   /* Add class activ to first item */
   links[0].classList.add('active');
+}
 
+function calculateTagsParams(tags) {
+  let params = {};
+  for ( let tag in tags) {
+    if (!params['min']){
+      params['min'] = tags[tag];
+    } else { params.min = Math.min(params.min, tags[tag]);}
+    if (!params['max']){
+      params['max'] = tags[tag];
+    } else { params.max = Math.max(params.max, tags[tag]);}
+  }
+  return params;
 }
 
 function generateTags(){
@@ -153,7 +165,8 @@ function generateTags(){
   }
   /* [NEW] find list of tags in right column */
   const tagList = document.querySelector(optTagsListSelector);
-
+  const tagsParams = calculateTagsParams(allTags);
+  console.log('tagsParams:', tagsParams);
   /* [NEW] create variable for all links HTML code */
   let allTagsHTML = '';
 
