@@ -13,7 +13,7 @@ const optArticleSelector = '.post',
 
 /* Functions */
 
-const titleClickHandler = function(event){
+function titleClickHandler (event){
   event.preventDefault();
   const clickedElement = this;
 
@@ -39,12 +39,19 @@ const titleClickHandler = function(event){
 
   /* [DONE] add class 'active' to the correct article */
   chosenArticle.classList.add('active');
-};
+}
 
-const generateTitleLinks = function(customSelector = ''){
+function generateTitleLinks (customSelector = ''){
   const linksList = document.querySelector(optTitleListSelector);
   const articles = document.querySelectorAll(optArticleSelector + customSelector);
 
+  /* [DONE] remove class 'active' from all articles */
+  const activeArticle = document.querySelector(optArticleSelector + '.active');
+  if (activeArticle){
+    activeArticle.classList.remove('active');
+  }
+  /* display first article */
+  articles[0].classList.add('active');
   /* [DONE] empty links list */
   linksList.innerHTML = '';
   let listHtml = '';
@@ -67,7 +74,7 @@ const generateTitleLinks = function(customSelector = ''){
     link.addEventListener('click', titleClickHandler);
   }
 
-};
+}
 
 function generateTags(){
   /* find all articles */
