@@ -2,9 +2,22 @@
 
 /* DOM referneces */
 
+const logo = document.querySelector('.logo');
+
 /* Event listners */
 
+logo.addEventListener ('click', function(){
+  /* find all active elements */
+  const activeElements = document.querySelectorAll('.active');
+  /* remove all active classes */
+  for (let element of activeElements){
+    element.classList.remove('active');
+  }
+  generateTitleLinks();
+});
+
 /* Global variables */
+
 const optArticleSelector = '.post',
   optTitleSelector = '.post-title',
   optTitleListSelector = '.titles',
