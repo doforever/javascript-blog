@@ -168,11 +168,19 @@ function generateAuthors(){
 }
 
 function addClickListenersToAuthors (){
-
+  /* find all links to author */
+  // const links = document.querySelectorAll('a[href^="#tag-"]');
+  const links = document.querySelectorAll('a[href^="#author-"]');
+  /* START LOOP: for each link */
+  for (let link of links){
+    /* add authorClickHandler as event listener for that link */
+    link.addEventListener('click', authorClickHandler);
+  /* END LOOP: for each link */
+  }
 }
 
 function authorClickHandler (){
-
+  console.log('author was clicked!');
 }
 
 /* Run */
