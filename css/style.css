@@ -107,6 +107,28 @@ a:hover {
   margin-bottom: 12px;
 }
 
+/* Tags */
+.tags li {
+  display: inline-block;
+  margin: 0 3px;
+}
+
+.tags .tag-size-2 {
+  font-size: 1.2em;
+}
+
+.tags .tag-size-3 {
+  font-size: 1.4em;
+}
+
+.tags .tag-size-4 {
+  font-size: 1.6em;
+}
+
+.tags .tag-size-5 {
+  font-size: 1.8em;
+}
+
 /* Post */
 .post {
   opacity: 0;
