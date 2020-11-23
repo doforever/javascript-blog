@@ -12,6 +12,11 @@ for (let home of homeButtons){
 }
 
 /* Global variables */
+const templates = {
+  articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
+  tagLink : Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
+  authorLink : Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
+};
 
 const opts = {
   tagSizes: {
@@ -112,8 +117,9 @@ function generateTitleLinks (customSelector = ''){
     /* [DONE] save title */
     const title = article.querySelector(select.article.title).innerText;
     /* [DONE] generate link html */
-    const linkHtml = '<li><a href="#' + id + '"><span>' + title + '</span></a></li>';
-    listHtml = listHtml + linkHtml;
+    const linkHTMLData = {id: id, title: title};
+    const linkHTML = templates.articleLink(linkHTMLData);
+    listHtml = listHtml + linkHTML;
   }
   /* [DONE] insert html into title list */
   linksList.innerHTML = listHtml;
@@ -173,10 +179,11 @@ function generateTags(){
     /* START LOOP: for each tag */
     for (let tag of tagsArray) {
       /* generate HTML of the link */
-      const liHtml = '<li><a href="#tag-' + tag + '">' + tag + '</a></li>';
+      const tagHTMLData = {tag: tag};
+      const tagHTML = templates.tagLink(tagHTMLData);
 
       /* add generated code to html variable */
-      tagsHtml = tagsHtml + liHtml;
+      tagsHtml = tagsHtml + tagHTML;
 
       /* [NEW] check if this link is NOT already in allTags */
       if(!allTags[tag]) {
@@ -264,7 +271,8 @@ function generateAuthors(){
     const author = article.getAttribute('data-author');
 
     /* generate HTML of the link */
-    const authorHtml = 'by <a href="#author-' + author + '"> ' + author + '</a>';
+    const authorHTMLData = {author: author};
+    const authorHTML = templates.authorLink(authorHTMLData);
 
     /* [NEW] check if this link is NOT already in allAuthors */
     if(!allAuthors[author]) {
@@ -274,7 +282,7 @@ function generateAuthors(){
       allAuthors[author]++;
     }
     /* insert HTML into author wrapper */
-    authorWrapper.innerHTML = authorHtml;
+    authorWrapper.innerHTML = authorHTML;
 
     /* END LOOP: for every article: */
   }
